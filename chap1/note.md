@@ -1,4 +1,4 @@
-- ### window.onload与$(document).ready()的对比
+- #### window.onload与$(document).ready()的对比
 
 > #### window.onload
 >
@@ -20,6 +20,7 @@
 > ```
 > ##### 简化写法
 > 无
+>
 >  #### $(document).ready()
 >
 > ##### 执行时机 
@@ -49,7 +50,7 @@
 > });
 > ```
 
-- ### DOM对象与JQuery对象的对比
+- #### DOM对象与JQuery对象的对比
 
 > JQuery对象就是包装DOM对象后产生的对象
 >
@@ -58,7 +59,7 @@
 >Dom转JQuery: $()
 
 
-- ### 解决JQuery与其他库的冲突
+- #### 解决JQuery与其他库的冲突
 
 > 默认情况下JQuery使用$作为自身的快捷方式
 >```
