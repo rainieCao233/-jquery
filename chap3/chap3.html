@@ -4,7 +4,62 @@
 	<meta charset="UTF-8">
 	<title>chap3</title>
 </head>
+<style>
+	#tooltip{
+		position: absolute;
+	}
+
+	ul li{
+		display: inline-block;
+		width: 200px;
+		height: 200px;
+	}
+	#tooltip{
+		background: pink;
+	}
+</style>
 <body>
-	
+	<!-- <a href="#" title="这是提示">提示</a> -->
+
+	<!-- <p><a href="#" class="tooltip" title="6661">提示1</a></p>
+	<p><a href="#" class="tooltip" title="6662">提示2</a></p>
+	<p><a href="#" title="1111">自带提示1</a></p>
+	<p><a href="#" title="2222">自带提示2</a></p> -->
+
+	<ul>
+		<li><a href="./民国1.jpg" class="tooltip" title="民国11111"><img src="./民国2.jpg" alt=""></a></li>
+		<li><a href="./民国1.jpg" class="tooltip" title="民国22222"><img src="./民国2.jpg" alt=""></a></li>
+		<li><a href="./民国1.jpg" class="tooltip" title="民国33333"><img src="./民国2.jpg" alt=""></a></li>
+		<li><a href="./民国1.jpg" class="tooltip" title="民国44444"><img src="./民国2.jpg" alt=""></a></li>
+	</ul>
 </body>
+<script src="../jquery-3.1.0.js"></script>
+<script>
+$(function(){
+	var x = 10, y = 20;
+	$("a.tooltip").mouseover(function(e){
+		this.myTitle = this.title;
+		this.title = "";
+		var imgTitle = this.myTitle?"<br/>"+ this.myTitle : "";
+
+		//创建div元素
+		// var tooltip = "<div id='tooltip'>"+ this.myTitle +"</div>"; //eg1
+		var tooltip = "<div id='tooltip'><img src='" + this.href + "' alt='yulantu'>" + imgTitle + "</div>";
+
+		$("body").append(tooltip);
+		$("#tooltip").css({
+			"top":(e.pageY + y) + "px",
+			"left":(e.pageX + x) + "px"
+		}).show("fast");
+	}).mouseout(function(e){
+		this.title = this.myTitle;
+		$("#tooltip").remove();
+	}).mousemove(function(e){
+		$("#tooltip").css({
+			"top":(e.pageY + y) + "px",
+			"left":(e.pageX + x) + "px"
+		});
+	});
+});
+</script>
 </html>
