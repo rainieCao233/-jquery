@@ -8,12 +8,14 @@
 
 - CSS-DOM
 >获取与设置style对象的各种属性
+>
 >element.style.color =  "red";
 
 #### JQuery DOM
 
 - 查找节点/节点属性
 >$("ul li:eq(0)")
+>
 >$("div").attr("id")
 
 - 创建节点/文本节点/属性节点
@@ -41,51 +43,77 @@ detach() | $("div").detach(); | 用法同上，但此方法下会保留原绑定
 empty() | $("div").empty(); | 清空div后代节点
 
 >appendTo()可以用来移动元素
+>
 >$("ul li:eq(0)").appendTo("ul");
 
 - 复制元素
 >$("div").clone(true).appentTo("ul");
+>
 >clone内参数表示是否复制原绑定在div上的事件
 
 - 替换节点
 >$("p").replaceWith(html); 
+>
 >$(html).replaceAll("p");
+>
 >以上两种方式均需要重新绑定事件
 
 - 包裹节点
 >$("strong").wrap(标签); 使用标签将每一个strong分别包裹起来
+>
 >$("strong").wrapAll(标签); 将所有strong用一个标签包裹
+>
 >$("strong").wrapInner(标签); 用标签包裹strong的后代元素
 
 - 属性操作
 >获取：$("p").attr("title");
+>
 >赋值：$("p").attr("title", "hahahahah"); / $("p").attr({"title":"hahahahah", "":"",...});
+>
 >删除：$("p").removeAttr("title");
 
 - 样式操作
 > 获取：$("p").attr("class");
+>
 > 赋值：$("p").attr("class", "high");
+>
 > 追加：$("p").addClass("another");
+>
 > 移除：$("p").removeClass("another");
+>
 > 切换：$("p").toggleClass("another"); / $btn.toggle(function(){},function(){});
+>
 > 判断是否使用某个类：$("p").hasClass("another");
 
 - 获取/设置html、文本与值
 > - html()
+>
 >$("div").html();
+>
 >$("div").html(html);
+>
 > - text()
+>
 >$("div").text();
+>
 >$("div").text(text);
+>
 > - val()
+>
 >$("div").val();
+>
 >$("div").val(val); / $("checkbox").(["checke2", "checke4"]);
+>
 
 - 遍历节点
 >children()：查找元素的子节点，不包含其余后代节点
+>
 >next()：获取匹配元素后面紧邻的同辈元素
+>
 >prev()： 获取匹配元素前面紧邻的同辈元素
+>
 >siblings()： 获取匹配元素前后所有的同辈元素
+>
 >closest()： 获取离得最近的匹配元素
 
 func | example | description
@@ -94,8 +122,9 @@ parent() | $("").parent() | 获取父元素
 parents() | $("").parents("") | 获取所有匹配的祖先元素
 closest() | $("").closest() | 获取第一个匹配的祖先元素
 
-- CSS-DOM
+- CSS DOM
 >$("p").css(""); / $("p").css("", ""); / $("p").css({"":"", "":"",...});
+>
 >$().height()：获取实际高度，而$().css("height")与样式设置有关，可能会得到auto
 
 func | example | description
