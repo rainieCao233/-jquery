@@ -70,9 +70,11 @@ $().bind("click", function(event){
 - event.stopPropagation()：阻止事件的冒泡
 - event.target()：获取到触发事件的元素
 - event.relatedTarget()：
+
 >对于 mouseover 事件来说，该属性是鼠标指针移到目标节点上时所离开的那个节点。
 >对于 mouseout 事件来说，该属性是离开目标时，鼠标指针进入的节点。
 >对于其他类型的事件来说，这个属性没有用
+
 - event.pageX / event.pageY：获取光标相对于页面的X坐标和Y坐标
 - event.which：获取鼠标的左中右键
 - event.metaKey：为键盘事件中获取ctrl按键
@@ -110,7 +112,6 @@ $().bind("click", function(event){
 > //...
 >});
 >$().trigger("myClick", ["我的自定义"， "事件"]);
->//
 >```
 > - 执行默认操作
 >
