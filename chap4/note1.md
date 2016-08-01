@@ -107,20 +107,20 @@
 - trigger("myClick");
 - 传递数据
 
-```
-$(".btn").bind("myClick", function(event, msg1, msg2){
- //...
-});
-$().trigger("myClick", ["我的自定义"， "事件"]);
-```
+>```
+>$(".btn").bind("myClick", function(event, msg1, msg2){
+> //...
+>});
+>$().trigger("myClick", ["我的自定义"， "事件"]);
+>```
 - 执行默认操作
 
-```
-//不仅会触发focus还会触发浏览器默认操作
-$("input").trigger("focus");
-//不会触发浏览器默认操作
-$("input").triggerHandler("focus");
-```
+>```
+>//不仅会触发focus还会触发浏览器默认操作
+>$("input").trigger("focus");
+>//不会触发浏览器默认操作
+>$("input").triggerHandler("focus");
+>```
 
 ##### 其他用法
 
