@@ -48,14 +48,14 @@
 
 - 事件对象
 
-```
-$().bind("click", function(event){
-    //...
-    event.stopPropagation();  //停止事件冒泡
-    event.preventDefault(); //阻止默认行为
-});
-//可将stopPropagation/preventDefault改写为return false;
-```
+>```
+>$().bind("click", function(event){
+>    //...
+>    event.stopPropagation();  //停止事件冒泡
+>    event.preventDefault(); //阻止默认行为
+>});
+>//可将stopPropagation/preventDefault改写为return false;
+>```
 
 ##### 事件捕获
 
@@ -103,38 +103,40 @@ $().bind("click", function(event){
 
 ##### 模拟操作
 
-> - trigger("click");
-> - trigger("myClick");
-> - 传递数据
->
->```
->$(".btn").bind("myClick", function(event, msg1, msg2){
-> //...
->});
->$().trigger("myClick", ["我的自定义"， "事件"]);
->```
-> - 执行默认操作
->
->```
->//不仅会触发focus还会触发浏览器默认操作
->$("input").trigger("focus");
->//不会触发浏览器默认操作
->$("input").triggerHandler("focus");
->```
+- trigger("click");
+- trigger("myClick");
+- 传递数据
+
+```
+$(".btn").bind("myClick", function(event, msg1, msg2){
+ //...
+});
+$().trigger("myClick", ["我的自定义"， "事件"]);
+```
+- 执行默认操作
+
+```
+//不仅会触发focus还会触发浏览器默认操作
+$("input").trigger("focus");
+//不会触发浏览器默认操作
+$("input").triggerHandler("focus");
+```
 
 ##### 其他用法
 
 - 绑定多个事件
-```
-$("div").bind("mouseover mouseout", function(){});
-```
+
+>```
+>$("div").bind("mouseover mouseout", function(){});
+>```
 
 - 添加事件命名空间，便于管理
-```
-$().bind("click", function(){});
-$().bind("click.aaa", function(){});
-//移除click.aaa
-$().unbind(".aaa");
-//移除click不含命名空间的事件
-$().unbind("click!");
-```
+
+>```
+>$().bind("click", function(){});
+>$().bind("click.aaa", function(){});
+>//移除click.aaa
+>$().unbind(".aaa");
+>//移除click不含命名空间的事件
+>$().unbind("click!");
+>```
