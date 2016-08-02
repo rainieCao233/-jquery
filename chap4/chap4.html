@@ -4,7 +4,173 @@
 	<meta charset="UTF-8">
 	<title>chap4</title>
 </head>
+<style>
+*{
+	padding: 0;
+	margin: 0;
+}
+.v_show{
+	width: 900px;
+	margin: 0 auto;
+	border:1px solid #C9C9C9;
+}
+.v_caption{
+	line-height: 50px;
+	background: #DEDEDE;
+	padding: 0 20px;
+}
+h2.caption,
+.highlight_tip,
+.change_btn{
+	display: inline-block;
+}
+.highlight_tip span{
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	background: #fff;
+	border-radius: 5px;
+	color: #fff;
+}
+span.current{
+	background: #9A9A9A;
+	color: #9A9A9A;
+}
+.change_btn span{
+	display: inline-block;
+	width: 40px;
+	height: 30px;
+	text-align: center;
+	font-size: 16px;
+	line-height: 30px;
+	vertical-align: top;
+	-webkit-user-select: none;  /* Chrome all / Safari all /opera15+*/  
+	-moz-user-select: none;     /* Firefox all */  
+	-ms-user-select: none;      /* IE 10+ */  
+	user-select: none;  
+}
+.change_btn{
+	border-radius: 10px;
+	overflow: hidden;
+	height: 30px;
+	background: #fff;
+	box-shadow: 0 0 5px #BDBDBD;
+	vertical-align: middle;
+	margin-top: -5px;
+}
+em a{
+	display: inline-block;
+	text-decoration: none;
+	color: #000;
+	font-style: normal;
+	float: right;
+}
+.v_content{
+	position: relative;
+	height: 180px;
+	overflow: hidden;
+}
+.v_content_list{
+	position: absolute;
+}
+ul li{
+	float: left;
+	margin: 10px 12.5px;
+	list-style: none;
+}
+
+img{
+	width: 200px;
+}
+h4 a{
+	text-decoration: none;
+	color: #000;
+}
+em{
+	font-style: normal;
+}
+</style>
 <body>
-	
+	<div class="v_show">
+		<div class="v_caption">
+			<h2 class="caption" title="卡通动漫">卡通动漫</h2>
+			<div class="highlight_tip">
+				<span class="current" id="span_1"></span>
+				<span class="" id="span_2"></span>
+				<span class="" id="span_3"></span>
+				<span class="" id="span_4"></span>
+			</div>
+			<div class="change_btn">
+				<span class="prev"><</span>
+				<span class="next">></span>
+			</div>
+			<em><a href="#">更多>></a></em>
+		</div>
+		<div class="v_content">
+			<div class="v_content_list">
+				<ul>
+					<li><a href="#"><img src="./小S4.jpg" alt=""></a><h4><a href="#">111111</a></h4><span>播放：<em>28,456</em></span></li>
+					<li><a href="#"><img src="./小S4.jpg" alt=""></a><h4><a href="#">111111</a></h4><span>播放：<em>28,456</em></span></li>
+					<li><a href="#"><img src="./小S4.jpg" alt=""></a><h4><a href="#">111111</a></h4><span>播放：<em>28,456</em></span></li>
+					<li><a href="#"><img src="./小S4.jpg" alt=""></a><h4><a href="#">111111</a></h4><span>播放：<em>28,456</em></span></li>
+					<li><a href="#"><img src="./小S4.jpg" alt=""></a><h4><a href="#">222222</a></h4><span>播放：<em>28,456</em></span></li>
+					<li><a href="#"><img src="./小S4.jpg" alt=""></a><h4><a href="#">222222</a></h4><span>播放：<em>28,456</em></span></li>
+					<li><a href="#"><img src="./小S4.jpg" alt=""></a><h4><a href="#">222222</a></h4><span>播放：<em>28,456</em></span></li>
+					<li><a href="#"><img src="./小S4.jpg" alt=""></a><h4><a href="#">222222</a></h4><span>播放：<em>28,456</em></span></li>
+					<li><a href="#"><img src="./小S4.jpg" alt=""></a><h4><a href="#">333333</a></h4><span>播放：<em>28,456</em></span></li>
+					<li><a href="#"><img src="./小S4.jpg" alt=""></a><h4><a href="#">333333</a></h4><span>播放：<em>28,456</em></span></li>
+					<li><a href="#"><img src="./小S4.jpg" alt=""></a><h4><a href="#">333333</a></h4><span>播放：<em>28,456</em></span></li>
+					<li><a href="#"><img src="./小S4.jpg" alt=""></a><h4><a href="#">333333</a></h4><span>播放：<em>28,456</em></span></li>
+					<li><a href="#"><img src="./小S4.jpg" alt=""></a><h4><a href="#">444444</a></h4><span>播放：<em>28,456</em></span></li>
+					<li><a href="#"><img src="./小S4.jpg" alt=""></a><h4><a href="#">444444</a></h4><span>播放：<em>28,456</em></span></li>
+					<li><a href="#"><img src="./小S4.jpg" alt=""></a><h4><a href="#">444444</a></h4><span>播放：<em>28,456</em></span></li>
+					<li><a href="#"><img src="./小S4.jpg" alt=""></a><h4><a href="#">444444</a></h4><span>播放：<em>28,456</em></span></li>
+				</ul>
+			</div>
+		</div>
+	</div>
 </body>
+<script src="../jquery-3.1.0.js"></script>
+<script>
+;$(function(){
+	var page = 1;
+	var i = 4;
+
+	var $parent = $("span.next").parents("div.v_show");
+	var $v_show = $parent.find("div.v_content_list");
+	var $v_content = $parent.find("div.v_content");
+
+	var v_width = $v_content.width();
+	var len = $v_show.find("li").length;
+	var page_count = Math.ceil(len/i);
+
+	$("span.next").click(function(){
+		if(!$v_show.is(":animated")){
+			if(page == page_count){
+				$v_show.animate({left:"0px"}, "slow");
+				page = 1;
+			}else{
+				$v_show.animate({left:"-="+v_width}, "slow");
+				page++;
+			}
+
+			$parent.find("span").eq((page-1)).addClass("current").siblings().removeClass("current");
+		}
+	});
+
+	$("span.prev").click(function(){
+		if(!$v_show.is(":animated")){
+			if(page == 1){
+				$v_show.animate({left:"-="+v_width*(page_count-1)}, "slow");
+				page = page_count;
+			}else{
+				$v_show.animate({left:"+="+v_width}, "slow");
+				page--;
+			}
+
+			$parent.find("span").eq((page-1)).addClass("current").siblings().removeClass("current");
+		}
+	});
+});
+</script>
 </html>
