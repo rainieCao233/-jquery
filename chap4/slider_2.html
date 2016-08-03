@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>slider</title>
+</head>
+<style>
+	*{
+		padding: 0;
+		margin: 0;
+	}
+	.slider{
+		width: 367px;
+	    /*overflow: hidden;*/
+	    border: 3px solid red;
+	    height: 280px;
+	    perspective: 2700px;
+	    position: relative;
+	    margin: 100px auto;
+	}
+	ul{
+	    width: 100%;
+	    height: 250px;
+	    margin-left: -184px;
+	    transform-style: preserve-3d;
+	    position: absolute;
+	    transition: transform 1s;
+	    transform: rotateY(-0deg);
+	    left: 50%;
+	}
+	ul li{
+		list-style: none;
+		position:absolute;
+		top: 0;
+		backface-visibility:hidden;
+		left: 0;
+		transition: opacity 1s, transform 1s;
+	}
+	ul li:nth-child(1),
+	#tem_1{
+		transform: translate3d(0px, 0, 0);
+	}
+	ul li:nth-child(2){
+		transform: translate3d(367px, 0, 0);
+	}
+	ul li:nth-child(3){
+		transform: translate3d(734px, 0, 0);
+	}
+	ul li:nth-child(4){
+		transform: translate3d(1101px, 0, 0);
+	}
+	ul li:nth-child(5){
+		transform: translate3d(1468px, 0, 0);
+	}
+	ul li:nth-child(6){
+		transform: translate3d(1835px, 0, 0);
+	}
+	ul li:nth-child(7){
+		transform: translate3d(2202px, 0, 0);
+	}
+	ul li:nth-child(8){
+		transform: translate3d(2569px, 0, 0);
+	}
+	ul li:nth-child(9),
+	#tem_2{
+		transform: translate3d(2936px, 0, 0);
+	}
+	ul div.tem{
+		position:absolute;
+	}
+	#tem_1,
+	#tem_2{
+		transition: all 1s;
+		position:absolute;
+	}
+	ul li h4{
+		margin: 0;
+		line-height: 25px;
+	}
+	ul li img{
+		width: 367px;
+		height: 225px;
+	}
+	/* 换页btn */
+	.change_btn{
+		margin: 0 auto;
+		margin-top: 100px;
+		width: 110px;
+	}
+	.change_btn span{
+		line-height: 30px;
+		background: #000;
+		color: #fff;
+		display: inline-block;
+		width: 50px;
+		text-align: center;
+		-webkit-user-select: none;
+	}
+</style>
+<body>
+	<div class="slider">
+		<ul>
+			<li>
+				<img src="./小S4.jpg" alt="">
+				<h4>111111</h4>
+			</li>
+			<li>
+				<img src="./小S4.jpg" alt="">
+				<h4>222222</h4>
+			</li>
+			<li>
+				<img src="./小S4.jpg" alt="">
+				<h4>333333</h4>
+			</li>
+			<li>
+				<img src="./小S4.jpg" alt="">
+				<h4>444444</h4>
+			</li>
+			<li>
+				<img src="./小S4.jpg" alt="">
+				<h4>555555</h4>
+			</li>
+			<li>
+				<img src="./小S4.jpg" alt="">
+				<h4>666666</h4>
+			</li>
+			<li>
+				<img src="./小S4.jpg" alt="">
+				<h4>777777</h4>
+			</li>
+			<li>
+				<img src="./小S4.jpg" alt="">
+				<h4>888888</h4>
+			</li>
+			<li>
+				<img src="./小S4.jpg" alt="">
+				<h4>999999</h4>
+			</li>
+			<div class="tem" id="tem_1">
+				<img src="./小S4.jpg" alt="">
+				<h4>tem111</h4>
+			</div>
+			<div class="tem" id="tem_2">
+				<img src="./小S4.jpg" alt="">
+				<h4>tem999</h4>
+			</div>
+		</ul>
+	</div>
+	<div class="change_btn">
+		<span class="prev"><</span>
+		<span class="next">></span>
+	</div>
+</body>
+<script src="../jquery-3.1.0.js"></script>
+<script>
+	var piece = 0;
+	$("span.next").click(function(){
+		piece -= 367; 
+		console.log(piece);
+		if(piece == -3303){
+			piece = 0;
+		}
+		$("ul").css("transform","translate3d("+ piece +"px, 0, 0)");
+	});
+	$("span.prev").click(function(){
+		piece += 367; 
+		console.log(piece);
+		if(piece == 367){
+			piece = -2936;
+		}
+		$("ul").css("transform","translate3d("+ piece +"px, 0, 0)");
+	});
+</script>
+</html>
