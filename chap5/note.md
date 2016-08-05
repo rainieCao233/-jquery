@@ -8,7 +8,6 @@
 > - 表单按钮：包含提交按钮、复位按钮和一般按钮，用于将数据传送到服务器上或者取消传送，还可以用来控制其它定义了处理脚本的处理。
 
  - 单行文本框的应用
-
 ```
 <form action="#" method="post" id="regform">
 	<fieldset>
@@ -298,10 +297,116 @@ $("#filterName").keyup(function(){
 ##### 其他应用
 
 - 网页字体大小
+```
+<div class="msg">
+	<div class="msg_caption">
+		<span class="bigger">放大</span>
+		<span class="smaller">缩小</span>
+	</div>
+	<div>
+		<p id="para">
+			this is some text.this is some text.this is some text.this is some text.this is some text.this is some text.this is some text.this is some text.this is some text.this is some text.this is some text.this is some text.this is some text.
+		</p>
+	</div>
+</div>
+```
+```
+$(function(){
+	$("span").click(function(){
+		var thisEle = $("#para").css("font-size");
+		var textFontSize = parseInt(thisEle, 10);
+		var unit = thisEle.slice(-2);  //获取倒数两位，即单位
+		var cName = $(this).attr("class");
+		if(cName == "bigger"){
+			if(textFontSize <= 22){
+				textFontSize+=2;
+			}
+		}else{
+			if(textFontSize >= 12){
+				textFontSize-=2;
+			}
+		}
+		$("#para").css("font-size", textFontSize + unit);
+	});
+});
+```
+
 - 网页选项卡
+```
+<div class="tab">
+	<div class="tab_menu">
+		<ul>
+			<li class="selected">时事</li>
+			<li>体育</li>
+			<li>娱乐</li>
+		</ul>
+	</div>
+	<div class="tab_box">
+		<div>时事</div>
+		<div class="hide">体育</div>
+		<div class="hide">娱乐</div>
+	</div>
+</div>
+```
+```
+$(function(){
+	var $div_li = $("div.tab_menu ul li");
+	$div_li.click(function(){
+		$(this).addClass("selected")
+			   .siblings().removeClass("selected");
+	    var index = $div_li.index(this);   //获取当前单击的<li>在全部<li>中的索引
+	    $("div.tab_box > div").eq(index).show()
+	    					  .siblings().hide();
+	});
+});
+```
+
 - 网页换肤
-
-
+```
+//将不同皮肤放在不同css文件中
+<link rel="stylesheet" type="text/css" href="./css/skin_0.css" id="cssfile" />
+<ul id="skin">
+	<li id="skin_0" title="灰色" class="selected">灰色</li>
+	<li id="skin_1" title="紫色" ></li>
+	<li id="skin_2" title="红色" ></li>
+	<li id="skin_3" title="天蓝色" ></li>
+	<li id="skin_4" title="橙色" ></li>
+	<li id="skin_5" title="淡绿色" ></li>
+</ul>
+<div id="div_side_0">
+	<div id="news">
+		<h1 class="title">时事新闻</h1>
+	</div>
+</div>
+<div id="div_side_1">
+	<div id="game">
+		<h1 class="title">娱乐新闻</h1>
+	</div>
+</div>
+```
+```
+//jquery.cookie.js简化了cookie操作
+<script src="./js/jquery.cookie.js" type="text/javascript"></script>
+<script>
+$(function(){
+	function switchSkin(skinName){
+		$("#" + skinName).addClass("selected")
+						.siblings().removeClass("selected");
+		$("#cssfile").attr("href", "css/"+skinName+".css");
+		$.cookie("MyCssSkin", skinName, {path:'/', expires: 10});  //计入cookie
+	}
+	var $li = $("#skin li");
+	$li.click(function(){
+		switchSkin(this.id);
+	});
+	//打开页面时先查找cookie,若存在则换上皮肤
+	var cookie_skin = $.cookie("MyCssSkin");
+	if(cookie_skin){
+		switchSkin(cookie_skin);
+	}
+});
+</script>
+```
 
 
 
