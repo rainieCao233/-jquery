@@ -32,20 +32,20 @@
 - 多行文本框的应用
 
  - 高度变化
-```
-<form action="#">
-<div class="msg">
-		<div class="msg_cap">
-			<span class="bigger">放大</span>
-			<span class="smaller">缩小</span>
-		</div>
-		<textarea name="" id="comment" cols="20" rows="8">
-			多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框
-		</textarea>
-</div>
-</form>
-```
-```
+	```
+	<form action="#">
+	<div class="msg">
+			<div class="msg_cap">
+				<span class="bigger">放大</span>
+				<span class="smaller">缩小</span>
+			</div>
+			<textarea name="" id="comment" cols="20" rows="8">
+				多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框多行文本框
+			</textarea>
+	</div>
+	</form>
+	```
+	```
 	$(function(){
 		var $comment = $("#comment");
 		$(".bigger").click(function(){
@@ -60,7 +60,7 @@
 			//与上函数相反
 		});
 	});
-```
+	```
  - 滚动条高度变化
 ```
 	$(function(){
