@@ -1,6 +1,6 @@
-#### jQuery对表单表格的应用
+### jQuery对表单表格的应用
 
-##### 表单应用
+#### 表单应用
 
 > 一个表单有3个基本组成部分：
 > - 表单标签：包含处理表单数据所用的服务器端程序URL以及数据提交到服务器的方法
@@ -62,19 +62,19 @@
  });
  ```
  - 滚动条高度变化
-```
-	$(function(){
-		var $comment = $("#comment");
-		$(".up").click(function(){
-			if(!$comment.is(":animated")){
-				$comment.animate({ scrollTop: "+=50" }, 400);		
-			}
-		});
-		$(".down").click(function(){
-			//与上函数相反
-		});
+ ```
+ $(function(){
+	var $comment = $("#comment");
+	$(".up").click(function(){
+		if(!$comment.is(":animated")){
+			$comment.animate({ scrollTop: "+=50" }, 400);		
+		}
 	});
-```
+	$(".down").click(function(){
+		//与上函数相反
+	});
+ });
+ ```
 
 - 复选框的应用
 ```
@@ -213,7 +213,7 @@ $(function(){
 });
 ```
 
-##### 表格应用
+#### 表格应用
 
 - 表格变色
 ```
@@ -294,7 +294,7 @@ $("#filterName").keyup(function(){
 ```
 
 
-##### 其他应用
+#### 其他应用
 
 - 网页字体大小
 ```
@@ -391,7 +391,7 @@ $(function(){
 $(function(){
 	function switchSkin(skinName){
 		$("#" + skinName).addClass("selected")
-						.siblings().removeClass("selected");
+						 .siblings().removeClass("selected");
 		$("#cssfile").attr("href", "css/"+skinName+".css");
 		$.cookie("MyCssSkin", skinName, {path:'/', expires: 10});  //计入cookie
 	}
@@ -407,20 +407,3 @@ $(function(){
 });
 </script>
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
