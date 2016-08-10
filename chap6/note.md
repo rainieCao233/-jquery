@@ -19,6 +19,7 @@
 > Ajax的核心是XMLHttpRequest，XMLHttpRequest对象提供了一个相对于简易的API方便程序员的开发。
 
 - 属性
+
  > readystate属性
  > readystate标识了当前XMLHttpRequest正处于什么状态，由此来判断应作出什么样的操作。
  
