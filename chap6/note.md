@@ -114,4 +114,4 @@ ajaxStop() | 请求结束时
 ajaxComplete() | 请求完成时
 ajaxError() | 请求发生错误时
 ajaxSend() | 请求发送前
-ajaxSuccess() | 请求成功时
+ajaxSuccess() | 请求成功
