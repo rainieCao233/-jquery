@@ -19,7 +19,7 @@
 > Ajax的核心是XMLHttpRequest，XMLHttpRequest对象提供了一个相对于简易的API方便程序员的开发。
 
 - 属性
- - readystate属性
+ > readystate属性
  > readystate标识了当前XMLHttpRequest正处于什么状态，由此来判断应作出什么样的操作。
  
 值 | 说明
@@ -30,7 +30,7 @@
 3 | 正在接受状态：此时已经接收到了HTTP响应头不信息，但是消息体部分还没有完全接收到
 4 | 完成响应状态：此时已经完成了HttpResponse响应的接收
 
- - responseText属性
+ > responseText属性
  > responseText属性包含客户端接收到的HTTP响应的文本内容
 
 readystate值 | responseText值
@@ -39,13 +39,13 @@ readystate值 | responseText值
 3 | 客户端还未完成的响应信息
 4 | 包含完整的响应信息
 
- - responseXML属性
+ > responseXML属性
  > 当readystate==4并且响应头部Content-Type的MIME类型被指定为XML时，该属性才会有值并且被解析为一个XML文档，否则该属性值为null
 
- - status属性
+ > status属性
  > status属性描述了HTTP状态代码，仅当readystate值为3或4时，才能对此属性进行访问，否则会报异常
 
- - statusText属性
+ > statusText属性
  > statusText属性描述了HTTP状态代码文本
 
 - 事件
