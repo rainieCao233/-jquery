@@ -4,9 +4,13 @@
 #### Validation() 表单验证插件
 
 > http://bassistance.de/jquery-plugins/jquery-plugin-validation
+> 
 > 内置验证规则：拥有必填，数字，E-mail，url和信用卡号码等19类内置验证规则
+> 
 > 自定义验证规则：可以很方便的自定义验证规则
+> 
 > 简单强大的验证信息提示：默认了验证信息提示，并提供自定义覆盖默认提示信息功能
+> 
 > 实时验证：可以通过keyup或blur事件触发验证，而不仅仅在表单提交的时候验证
 
 ```
@@ -127,6 +131,7 @@ $(function(){
 #### Form 表单插件
 
 > jQuery Form插件是一个优秀的Ajax插件，可以容易的无侵入的升级HTML表单以支持Ajax。
+> 
 > 下载地址：http://jquery.malsup.com/form/#download
 
 ```
@@ -191,19 +196,23 @@ $(function(){
 
  - 利用参数formData
  > formData是一个数组对象，格式如下，可遍历数组进行验证
+ > 
  > [{name:name,value:nameValue},{name:password, value:passwordValue}]
 
  - 利用jqForm
  > jqForm是一个jQuery对象，它封装了表单的元素
+ > 
  > 通过jqForm[0].address.value获取地址的值
 
  - 利用fieldValue()方法
  > 该方法会把匹配元素的值插入到数组中，然后返回整个数组，若元素的值被判定无效则会返回空
+ > 
  > $("input[name=address]").fieldValue();
 
 #### SimpleModal 模态窗口插件
 
 > http://www.ericmmartin.com/projects/simplemodal
+> 
 > 和bootstrap差不多，爸爸开心了再写
 
 
