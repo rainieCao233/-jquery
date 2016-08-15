@@ -232,8 +232,73 @@ $(function(){
 
 #### 编写Jquery插件
 
+> JQuery提供了两个用于扩展JQuery功能的方法，即JQuery.fn.extend()和jQuery.extend()方法
 >
+> 前者封装对象方法的插件，后者用于扩展全局函数的插件/选择器插件
 >
->
->
+> 除此之外jQuery.extend()还可用于扩展已有的Object对象
+
+```
+//jQuery.extend(target, obj1, obj2, ...);
+var settings = {validate:true, limit:5, name:"foo"};
+var options = {validate:false, name:"bar"};
+var newOptions = jQuery.extend(settings, options);
+//{validate:false, limit:5, name:"bar"};
+```
+
+- 编写Jquery
+
+ > 编写一个取色器插件 color()
+
+ ```
+;(function($){
+	$.fn.extend({
+		"color":function(value){
+			return this.css("color", value);
+		},
+		"border":function(value){
+			
+		}
+	});
+})(jQuery);
+ ```
+
+ > 编写一个隔行变色插件 alterBgColor()
+
+ ```
+;(function($){
+	$.fn.extend({
+		"alterBgColor":function(options){
+			options = $.extend({
+				odd:"odd",
+				even:"even",
+				selected:"selected"
+			}, options);
+			$("tbody>tr:odd", this).addClass(options.odd);
+			$("tbody>tr:even", this).addClass(options.even);
+			$("tbody>tr", this).click(function(){
+				//判断当前是否选中
+				var hasSelected = $(this).hasClass(options.selected);
+				$(this)[hasSelected?"removeClass":"addClass"](options, selected)
+						.find(":checked").attr("checked", !hasSelected);
+				$("tbody:tr:has(:checked)", this).addClass(options, selected);
+				return this; //返回this，使方法可链
+			});
+		}
+	});
+})(jQuery);
+ ```
+
+ ```
+//jQuery的选择器可能会匹配一个或多个元素，因此可使用each对每个元素进行操作
+;(function($){
+	$.fn.extend({
+		"alterBgColor":function(options){
+			return this.each(function(){
+				//插件代码
+			});
+		}
+	});
+})(jQuery);
+ ```
 
