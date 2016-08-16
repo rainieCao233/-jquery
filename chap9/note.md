@@ -5,6 +5,8 @@
 
 #### jQuery Mobile
 > 主要策略：创建一个在常见智能手机/平板电脑浏览器领域内能统一用户界面的顶级JS库
+>
+> 下载：http://jquerymobile.com/download/
 
 - 主要特性：
  - 基于JQuery构建
@@ -19,3 +21,8 @@
  - 支持触摸和鼠标事件
  - 统一的UI组件
  - 强大的主题化框架
+
+- 其他框架
+ - jqMobi
+ - Sencha Touch
+ - Zepto.js
