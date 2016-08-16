@@ -248,6 +248,8 @@ var newOptions = jQuery.extend(settings, options);
 
 - 编写Jquery
 
+ - 封装JQuery对象方法的插件
+
  > 编写一个取色器插件 color()
 
  ```
@@ -300,5 +302,51 @@ var newOptions = jQuery.extend(settings, options);
 		}
 	});
 })(jQuery);
+ ```
+
+ - 封装全局函数的插件
+
+ > 实现去除左侧和右侧的空格
+
+ ```
+;(function($){
+	$.extend({
+		ltrim:function(text){
+			return (text || "").replace(/^\s+/g, "");
+		},
+		rtrim:function(text){
+			return (text || "").replace( /\s+$/g, "");
+		}
+	});
+})(jQuery);
+$(function(){
+	jQuery.ltrim("     text     ") + "\n" +
+	jQuery.rtrim("     text     ");
+});
+ ```
+
+ - 自定义选择器
+
+ > 编写一个between选择器 $("div:between(2, 5)")
+ 
+ ```
+;(function($){
+	$.extend(jQuery.expr[":"],{
+		between:function(a, i, m){
+			var tmp=m[3].split(",");
+			return tmp[0]-0<i&&i<tmp[1]-0;
+			//tmp[0]-0将原本的字符串2变为数字2
+		}
+	});
+})(jQuery);
+$(function(){
+	$("div:between(2,5)").css("background", "#fff");
+});
+ ```
+ ```
+ //下面例举几个常用的扩展实例：
+ $.extend({net:{}});
+ //这是在jquery全局对象中扩展一个net命名空间。
+ $.extend($.net,{hello:function(){alert('hello');}})
  ```
 
