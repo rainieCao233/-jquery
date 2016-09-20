@@ -5,37 +5,205 @@
 	<title>chap11</title>
 </head>
 <body>
+
+</body>
+<script>
+function textFill(input){
+	var originalValue = input.val();
+	input.focus(function(){
+		if($.trim(input.val()) == originalValue){
+			input.val('');
+		}
+	}).blur(function(){
+		if($.trim(input.val()) == ''){
+			input.val(originalValue);
+		}
+	});
+}
 $(document).ready(function(){
 
 	<!-- 1.禁用页面的右键菜单 -->
+	$(document).bind("contextmenu", function(){
+		return false;
+	});
+
 	<!-- 2.新窗口打开页面 -->
+	$("a[href^='http://']").attr("target", "_blank");
+	$("a[rel$='external']").click(function(){
+		this.target = "_blank";
+	});
+
 	<!-- 3.判断浏览器类型 -->
+	if($.browser.mozilla && $.browser.version >= "1.8"){}
+	if($.browser.safari){}
+	if($.browser.chrome){}
+	if($.browser.opera){}
+	if($.browser.msie && $.browser.version <= 6){} //IE
+	if($.browser.msie && $.browser.version > 6){}  //IE
+
 	<!-- 4.输入框文字获取和失去焦点 -->
+	$("input.text1").val("Enter your search text");
+	textFill($("input.text1"));
+
 	<!-- 5.返回头部滑动动画 -->
+	jQuery.fn.scrollTop = function(speed){
+		var targetOffset = $(this).offset().top;
+		$("html,body").stop().animate({scrollTop:targetOffset}, speed);
+		return this;
+	}
+	$("#goHeader").click(function(){
+		$("body").scrollTop(500);
+		return false;
+	})
+
 	<!-- 6.获取鼠标位置 -->
+	$(document).mousemove(function(e){
+		$("#XY").html("X : " + e.pageX + " | Y : " + e.pageY);
+	});
+
 	<!-- 7.判断元素是否存在 -->
-    <!-- 8.点击div也可以跳转 -->
+	if($("#id").length){}
+
+  <!-- 8.点击div也可以跳转 -->
+	// <div><a href="index.html"></a></div>
+	$("div").click(function(){
+		window.location = $(this).find("a").attr("href");
+		return false;
+	});
+
 	<!-- 9.根据浏览器大小添加不同的样式 -->
+	function checkWindowSize(){
+		if($(window).width() > 200){
+			$("body").addClass("large")
+		}else{
+			$("body").removeClass("large")
+		}
+	}
+	$(window).resize(checkWindowSize);
+
 	<!-- 10.设置div在屏幕中央 -->
+	jQuery.fn.center = function(){
+		this.css("position", "absolute");
+		this.css("top", ($(window).height() - this.height())/2+$(window).scrollTop() + "px");
+		this.css("left", ($(window).width() - this.width())/2+$(window).scrollLeft() + "px");
+		return this;
+	}
+	$("#XY").center();
+
 	<!-- 11.创建自己的选择器 -->
+	$.extend($.expr[":"],{
+		moreThan500px:function(a){
+			return $(a).width() > 500;
+		}
+	});
+	$('.box:moreThan500px').click(function(){});
+
 	<!-- 12.关闭所有动画效果 -->
+	jQuery.fx.off = true;
+
 	<!-- 13.检测鼠标的右键和左键 -->
+	$("#XY").mousedown(function(e){
+		alert(e.width);
+	})
+
 	<!-- 14.回车提交表单 -->
+	$("input").keyup(function(e){
+		if(e.which == 13){
+			alert("回车提交");
+		}
+	})
+
 	<!-- 15.设置全局Ajax参数 -->
+	$("#load").ajaxStart(function(){
+		showLoading();          //显示loading
+		disableButtons();       //禁用button
+	});
+	$("#load").ajaxComplete(function(){
+		hideLoading();
+		enableButtons();
+	});
+
 	<!-- 16.获取选中的下拉框 -->
+	$("#id").find("option:selected");
+	$("#id option:selected");
+
 	<!-- 17.切换复选框 -->
+	var tog = false;
+	$("button").click(function(){
+		$("input[type=checkbox]").attr("checked", !tog);
+		top = !tog;
+	});
+
 	<!-- 18.使用siblings()来选择同辈元素 -->
+	$("#nav li").click(function(){
+		$("#nav li").removeClass("active");
+		$(this).addClass("active");
+	});
+	$("#nav li").click(function(){
+		$(this).addClass("active")
+					 .siblings().removeClass("active");
+	});
+
 	<!-- 19.个性化链接 -->
+	$("a[href$='pdf']").addClass("pdf");
+	$("a[href$='zip']").addClass("zip");
+	$("a[href$='psd']").addClass("psd");
+
 	<!-- 20.在一段时间之后自动隐藏或者关闭元素 -->
+	setTimeOut(function(){
+		$("div").fadeIn(300);
+	});
+	$("div").slideUp(300).delay(3000).fadeIn(400);   //1.4版本
+
 	<!-- 21.使用Firefox/Firebug来记录事件日志 -->
+	jQuery.log = jQuery.fn.log = function(msg){
+		if(console){
+			console.log(msg, this);
+		}
+	}
+
 	<!-- 22.为任何与选择器相匹配的元素绑定事件 -->
+	// 1.4.2之前的版本
+	$("table").each(function(){
+		$("td", this).live("click", function(){
+			$(this).toggleClass("hover");
+		});
+	});
+	//1.4.2
+	$("table").delegate("td", "click", function(){
+		$(this).toggleClass("hover");
+	})
+	//1.7.1
+	$("table").on("click", "td", function(){
+		$(this).toggleClass("hover");
+	})
+
 	<!-- 23.使用CSS钩子 -->
+	$.cssHooks['borderRadius'] = {
+		get:function(){},
+		set:function(){}
+	};
+	$("#rect").css("borderRadius", 5);
+
 	<!-- 24.$.proxy()的使用 -->
+	// <div id="panel" style="display:none;"><button>Close</button></div>
+	$("#panel").fadeIn(function(){
+		$("#panel button").click(function(){
+			$(this).fadeOut();
+		});
+	});
+	$("#panel").fadeIn(function(){
+		$("#panel button").click($.proxy(function(){
+			$(this).fadeOut;
+		},this));
+	});	
+
 	<!-- 25.限制text-area域中的字符个数 -->
 	<!-- 26.本地存储 -->
 	<!-- 27.解析json数据时报parseError错误 -->
 	<!-- 28.从元素中除去HTML -->
 	<!-- 29.扩展String对象的方法 -->
 });
-</body>
+
+</script>
 </html>
